@@ -61,4 +61,4 @@ async def on_ready():
         await asyncio.sleep(60) 
 
 
-bot.run("Tokeh") # replace with your bottoken
+bot.run("Token") # replace with your bottoken
