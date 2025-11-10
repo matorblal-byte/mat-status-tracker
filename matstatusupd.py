@@ -10,9 +10,9 @@ intents = discord.Intents.default()
 intents.members = True  # Enable the members intent to access member information
 intents.presences = True # Enable the presences intent to access user statuses and activities
 
-mat = 1036069001333321728
-ann = 1385756951052423198 # current id is a placeholder for testing - replace with actual channel ID 1365866818962718802
-serv = 1365865723829682278
+mat = 1036069001333321728 # you can replace this (user id) with a member from a server that the bot is in)
+ann = 1385756951052423198 # you can replace this (channel ID) with your own channel in your server
+serv = 1365865723829682278 # replace this with the server id the user is in (bot has to be in server0
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
