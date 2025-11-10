@@ -3,41 +3,15 @@ import discord
 from discord import member
 from discord import channel
 from discord.ext import commands
-import win32api
-import win32con
 import sys
 import time
-import signal
 
-async def shutdown_handler():
-    await channel.send("Computer is shutting down, the bot is going to die now")
-    await bot.close()
-
-def register_shutdown_handler(loop):
-    # Helper for signal.signal fallback (accepts signum, frame)
-    def _signal_handler(signum, frame):
-        try:
-            loop.call_soon_threadsafe(lambda: asyncio.create_task(shutdown_handler()))
-        except RuntimeError:
-            # If loop is not running or already closed, try running shutdown synchronously
-            try:
-                asyncio.run(shutdown_handler())
-            except Exception:
-                pass
-
-    for sig in (signal.SIGINT, signal.SIGTERM):
-        try:
-            # Preferred non-blocking asyncio API (Unix)
-            loop.add_signal_handler(sig, lambda: asyncio.create_task(shutdown_handler()))
-        except (NotImplementedError, AttributeError):
-            # Fallback for Windows or event loops that don't implement add_signal_handler
-            signal.signal(sig, _signal_handler)
 intents = discord.Intents.default()
 intents.members = True  # Enable the members intent to access member information
 intents.presences = True # Enable the presences intent to access user statuses and activities
 
 mat = 1036069001333321728
-ann = 1385756951052423198 #current id is a placeholder for testing - replace with actual channel ID 1365866818962718802
+ann = 1385756951052423198 # current id is a placeholder for testing - replace with actual channel ID 1365866818962718802
 serv = 1365865723829682278
 
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -85,13 +59,6 @@ async def on_ready():
             print(f"No status change detected. Current status: {custom_status}")
             
         await asyncio.sleep(60) 
-   
 
 
-
-
-# In your main function or before bot.run()
-loop = asyncio.get_event_loop()
-register_shutdown_handler(loop)
-
-bot.run("Tokeh")
+bot.run("Tokeh") # replace with your bottoken
