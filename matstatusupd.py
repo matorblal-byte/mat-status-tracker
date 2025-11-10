@@ -44,7 +44,7 @@ async def on_ready():
                 break
         
         if new_custom_status is None:
-            new_custom_status = "No custom status"
+            new_custom_status = custom_status # This is because it will recognize no status when offline
             
         if new_custom_status != custom_status:
             custom_status = new_custom_status
