@@ -58,6 +58,9 @@ async def on_ready():
             new_custom_status = custom_status # This is because it will recognize no status when offline
             
         if new_custom_status != custom_status:
+            if "iwc" in new_custom_status or "iwec" in new_custom_status:
+                channel = bot.get_channel(ann)
+                await channel.send("The current status was ommitted due to privacy.")  
             custom_status = new_custom_status
             tag_names_to_apply = [" ", ","] # same as beofre
             tags_to_apply = []
